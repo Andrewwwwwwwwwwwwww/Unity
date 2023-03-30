@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class mover : MonoBehaviour
+{
+    //[SerializeField] float xValue = 10.0f;
+    //[SerializeField] float yValue = 0f;
+    //[SerializeField]float zValue = 0.0f;
+    //[SerializeField] float speed = 100f;
+    float xpos = 0;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        xpos = transform.position.x;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        toOrigin();
+    }
+    
+    
+    void toOrigin()
+    {
+        if (xpos != 0.0f)
+        {
+            Vector3 target = new Vector3(0.0f, 1.0f, 0.0f);
+            transform.position = Vector3.MoveTowards(transform.position,target, 0.01f);
+            xpos = transform.position.x;
+            toOrigin();
+        }
+    }
+
+
+}
